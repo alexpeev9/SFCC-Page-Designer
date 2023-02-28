@@ -1,0 +1,25 @@
+{
+    "name": "Product Carousel",
+    "group": "commerce_layouts",
+    "attribute_definition_groups": [
+        {
+            "id": "heading",
+            "attribute_definitions": [
+                {
+                    "id": "textHeadline",
+                    "name": "carousel title",
+                    "type": "string",
+                    "required": false
+                }
+            ]
+        }
+    ],
+    "region_definitions": [
+        {
+            "id": "slides",
+            "name": "Slides",
+            "component_type_exclusions": [
+            ]
+        }
+    ]
+}
