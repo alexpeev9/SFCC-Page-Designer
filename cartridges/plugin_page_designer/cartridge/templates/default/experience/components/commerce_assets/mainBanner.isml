@@ -1,7 +1,6 @@
 <isscript>
     var assets = require('*/cartridge/scripts/assets.js');
     assets.addCss('/css/experience/components/commerceAssets/imageAndTextCommon.css');
-    assets.addCss('/css/experience/components/commerceAssets/mainBanner.css');
 </isscript>
 
 <div class="mainbanner-container">

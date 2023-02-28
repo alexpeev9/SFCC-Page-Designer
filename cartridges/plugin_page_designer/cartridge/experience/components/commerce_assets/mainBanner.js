@@ -1,9 +1,11 @@
 "use strict";
+/* global response */
 
 const Template = require("dw/util/Template");
 const HashMap = require("dw/util/HashMap");
 const URLUtils = require("dw/web/URLUtils");
 const ImageTransformation = require("*/cartridge/experience/utilities/ImageTransformation.js");
+const pageCache = require("*/cartridge/experience/utilities/pageCache");
 
 /**
  * @param {dw.experience.ComponentScriptContext} context The Component script context object.
@@ -21,9 +23,7 @@ module.exports.render = function (context, modelIn) {
     model.cta = URLUtils.url("Search-Show", "cgid", cta.getID()).toString();
 
     // instruct 24 hours relative pagecache
-    const expires = new Date();
-    expires.setDate(expires.getDate() + 1);
-    response.setExpires(expires);
+    pageCache();
 
     return new Template(
         "experience/components/commerce_assets/mainBanner"
