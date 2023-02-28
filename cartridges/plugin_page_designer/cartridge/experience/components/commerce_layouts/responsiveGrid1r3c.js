@@ -1,9 +1,10 @@
 "use strict";
 /* global response */
 
-var Template = require("dw/util/Template");
-var HashMap = require("dw/util/HashMap");
-var PageRenderHelper = require("*/cartridge/experience/utilities/PageRenderHelper.js");
+const Template = require("dw/util/Template");
+const HashMap = require("dw/util/HashMap");
+const PageRenderHelper = require("*/cartridge/experience/utilities/PageRenderHelper.js");
+const pageCache = require("*/cartridge/experience/utilities/pageCache");
 
 /**
  * Render logic for the storefront.3 Row x 1 Col (Mobile) 1 Row x 3 Col (Desktop) layout
@@ -13,15 +14,13 @@ var PageRenderHelper = require("*/cartridge/experience/utilities/PageRenderHelpe
  * @returns {string} The markup to be displayed
  */
 module.exports.render = function (context, modelIn) {
-    var model = modelIn || new HashMap();
-    var component = context.component;
+    const model = modelIn || new HashMap();
+    const component = context.component;
 
     model.regions = PageRenderHelper.getRegionModelRegistry(component);
 
     // instruct 24 hours relative pagecache
-    var expires = new Date();
-    expires.setDate(expires.getDate() + 1); // this handles overflow automatically
-    response.setExpires(expires);
+    pageCache();
 
     return new Template(
         "experience/components/commerce_layouts/responsiveGrid1r3c"
