@@ -16,23 +16,17 @@ const pageCache = require("*/cartridge/experience/utilities/pageCache");
 module.exports.render = function (context, modelIn) {
     const model = modelIn || new HashMap();
     const { component, content } = context;
-    const { firstColumn, secondColumn, thirdColumn } = content;
+    const { left, right, top, bottom } = content;
 
     model.regions = PageRenderHelper.getRegionModelRegistry(component);
-    model.regions.column1.setClassName(
-        "region col-12 col-md-4 order-" + (firstColumn || "1")
-    );
-    model.regions.column2.setClassName(
-        "region col-12 col-md-4 order-" + (secondColumn || "2")
-    );
-    model.regions.column3.setClassName(
-        "region col-12 col-md-4 order-" + (thirdColumn || "3")
+    model.regions.body.setClassName(
+        `pl-${left || 0} pr-${right || 0} pt-${top || 0} pb-${bottom || 0}`
     );
 
     // instruct 24 hours relative pagecache
     pageCache();
 
     return new Template(
-        "experience/components/commerce_layouts/responsiveGrid1r3c"
+        "experience/components/commerce_layouts/responsiveLayout"
     ).render(model).text;
 };
