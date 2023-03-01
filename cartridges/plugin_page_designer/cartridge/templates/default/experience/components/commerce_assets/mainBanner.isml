@@ -17,10 +17,10 @@
             loading="lazy"
             />
         </picture>
-        <h4 class="main-title w-100 text-center pt-3">
+        <h4 class="main-title position-absolute w-100 text-center pt-3">
             <isprint value="${pdict.title}" encoding="off" />
         </h4>
-        <section class="main-description d-flex flex-column px-3">
+        <section class="main-description position-absolute d-flex flex-column px-3">
             <isprint value="${pdict.shortDescription}" encoding="off" />
             <a href="${pdict.cta}">${Resource.msg('cta.text', 'page_designer', null)}</a>
         </section>
