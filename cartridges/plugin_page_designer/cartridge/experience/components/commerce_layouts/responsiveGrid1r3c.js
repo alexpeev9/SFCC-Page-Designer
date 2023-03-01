@@ -15,9 +15,19 @@ const pageCache = require("*/cartridge/experience/utilities/pageCache");
  */
 module.exports.render = function (context, modelIn) {
     const model = modelIn || new HashMap();
-    const component = context.component;
+    const { component, content } = context;
+    const { firstColumn, secondColumn, thirdColumn } = content;
 
     model.regions = PageRenderHelper.getRegionModelRegistry(component);
+    model.regions.column1.setClassName(
+        "region col-12 col-md-4 order-" + (firstColumn || "1")
+    );
+    model.regions.column2.setClassName(
+        "region col-12 col-md-4 order-" + (secondColumn || "2")
+    );
+    model.regions.column3.setClassName(
+        "region col-12 col-md-4 order-" + (thirdColumn || "3")
+    );
 
     // instruct 24 hours relative pagecache
     pageCache();
